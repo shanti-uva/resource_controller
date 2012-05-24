@@ -23,7 +23,7 @@ class ImagesControllerTest < ActionController::TestCase
   end
 
   should "not respond to show" do
-    assert_raise(ActionController::UnknownAction) do
+    assert_raise(::AbstractController::ActionNotFound) do
       get :show
     end
   end
