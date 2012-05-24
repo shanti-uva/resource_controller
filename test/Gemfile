@@ -7,7 +7,7 @@ gem "makandra_resource_controller", :path => "../"
 gem 'redgreen', '=1.2.2'
 
 group :test do
-  gem "shoulda", '=2.11.3'
+  gem "shoulda", '=3.0.1'
   gem "mocha", '=0.9.9'
   gem "ruby-debug", '=0.10.4'
 end
