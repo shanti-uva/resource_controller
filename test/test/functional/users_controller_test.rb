@@ -74,7 +74,7 @@ class UsersControllerTest < ActionController::TestCase
       get :edit, :id => @dude.id
     end
 
-    should assign_to(:dude).with(@dude)
+    should assign_to(:dude).with { @dude }
     should respond_with :success
     should render_with_layout :application
     should render_template :edit

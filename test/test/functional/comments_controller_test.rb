@@ -78,7 +78,7 @@ class CommentsControllerTest < ActionController::TestCase
       get :edit, :id => @comment.id
     end
 
-    should assign_to(:comment).with(@comment)
+    should assign_to(:comment).with { @comment }
     should respond_with :success
     should render_with_layout :comments
     should render_template :edit

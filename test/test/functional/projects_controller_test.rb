@@ -74,7 +74,7 @@ class ProjectsControllerTest < ActionController::TestCase
       get :edit, :id => @project.id
     end
 
-    should assign_to(:project).with(@project)
+    should assign_to(:project).with { @project }
     should respond_with :success
     should render_with_layout :projects
     should render_template :edit

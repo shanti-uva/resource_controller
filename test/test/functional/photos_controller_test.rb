@@ -94,7 +94,7 @@ class PhotosControllerTest < ActionController::TestCase
       get :edit, :id => @photo.id
     end
 
-    should assign_to(:photo).with(@photo)
+    should assign_to(:photo).with { @photo }
     should respond_with :success
     should render_with_layout :photos
     should render_template :edit

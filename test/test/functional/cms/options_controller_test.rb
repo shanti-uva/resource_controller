@@ -78,7 +78,7 @@ class Cms::OptionsControllerTest < ActionController::TestCase
       get :edit, :product_id => @product.id, :id => @option.id
     end
 
-    should assign_to(:option).with(@option)
+    should assign_to(:option).with { @option }
     should respond_with :success
     should render_with_layout :application
     should render_template :edit

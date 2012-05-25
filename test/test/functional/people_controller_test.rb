@@ -84,7 +84,7 @@ class PeopleControllerTest < ActionController::TestCase
       get :edit, :id => @person.id
     end
 
-    should assign_to(:person).with(@person)
+    should assign_to(:person).with { @person }
     should respond_with :success
     should render_with_layout :people
     should render_template :edit
