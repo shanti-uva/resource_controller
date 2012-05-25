@@ -91,7 +91,7 @@ class CommentsControllerTest < ActionController::TestCase
         put :update, :id => @comment.id, :comment => {:body => 'My new comment'}
       end
 
-      should assign_to(:comment){ @comment }
+      should assign_to(:comment).with { @comment }
       should redirect_to("comment page") { comment_path(assigns(:comment)) }
       should set_the_flash.to "Successfully updated!"
 
@@ -122,7 +122,7 @@ class CommentsControllerTest < ActionController::TestCase
         delete :destroy, :id => @comment.id
       end
 
-      should assign_to(:comment){ @comment }
+      should assign_to(:comment).with { @comment }
       should redirect_to("comments index"){ comments_path }
       should set_the_flash.to "Successfully removed!"
     end

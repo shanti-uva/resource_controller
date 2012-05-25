@@ -87,7 +87,7 @@ class UsersControllerTest < ActionController::TestCase
         put :update, :id => @dude.id, :dude => {:name => 'My new user'}
       end
 
-      should assign_to(:dude){ @dude }
+      should assign_to(:dude).with { @dude }
       should redirect_to("dude page") { dude_path(assigns(:dude)) }
       should set_the_flash.to "Successfully updated!"
 
@@ -118,7 +118,7 @@ class UsersControllerTest < ActionController::TestCase
         delete :destroy, :id => @dude.id
       end
 
-      should assign_to(:dude){ @dude }
+      should assign_to(:dude).with { @dude }
       should redirect_to("dudes index"){ dudes_url }
       should set_the_flash.to "Successfully removed!"
     end

@@ -97,7 +97,7 @@ class PeopleControllerTest < ActionController::TestCase
         put :update, :id => @person.id, :person => {:name => 'Marcel Marceau'}
       end
 
-      should assign_to(:person){ @person }
+      should assign_to(:person).with { @person }
       should redirect_to("person page") { person_path(assigns(:person)) }
       should set_the_flash.to "Successfully updated!"
 
@@ -128,7 +128,7 @@ class PeopleControllerTest < ActionController::TestCase
         delete :destroy, :id => @person.id
       end
 
-      should assign_to(:person){ @person }
+      should assign_to(:person).with { @person }
       should redirect_to("people index"){ people_path }
       should set_the_flash.to "Successfully removed!"
     end

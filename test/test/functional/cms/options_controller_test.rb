@@ -91,7 +91,7 @@ class Cms::OptionsControllerTest < ActionController::TestCase
         put :update, :product_id => @product.id, :id => @option.id, :option => {:title => 'My new option'}
       end
 
-      should assign_to(:option){ @option }
+      should assign_to(:option).with { @option }
       should redirect_to("option page") { cms_product_option_path(assigns(:option)) }
       should set_the_flash.to "Successfully updated!"
 
@@ -122,7 +122,7 @@ class Cms::OptionsControllerTest < ActionController::TestCase
         delete :destroy, :product_id => @product.id, :id => @option.id
       end
 
-      should assign_to(:option){ @option }
+      should assign_to(:option).with { @option }
       should redirect_to("options index"){ cms_product_options_url }
       should set_the_flash.to "Successfully removed!"
     end

@@ -107,7 +107,7 @@ class PhotosControllerTest < ActionController::TestCase
         delete :destroy, :id => @photo.id
       end
 
-      should assign_to(:photo){ @photo }
+      should assign_to(:photo).with { @photo }
       should redirect_to("photos index"){ photos_path }
       should set_the_flash.to "Successfully removed!"
     end
