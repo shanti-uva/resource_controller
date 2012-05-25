@@ -3,7 +3,7 @@ require 'test_helper'
 class PhotosControllerTest < ActionController::TestCase
   def setup
     @user = users :one
-    @photo = Photo.find 1
+    @photo = photos :one
   end
 
   context "actions specified" do

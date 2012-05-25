@@ -2,7 +2,7 @@ require 'test_helper'
 
 class PostsControllerTest < ActionController::TestCase
   def setup
-    @post = Post.find 1
+    @post = posts :one
   end
 
   context "on post to :create" do

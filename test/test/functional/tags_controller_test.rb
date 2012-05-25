@@ -2,7 +2,7 @@ require 'test_helper'
 
 class TagsControllerTest < ActionController::TestCase
   def setup
-    @tag = Tag.find 1
+    @tag = tags :one
   end
 
   context "with photo as parent" do

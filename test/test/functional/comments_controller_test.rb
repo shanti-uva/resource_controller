@@ -3,7 +3,7 @@ require 'test_helper'
 class CommentsControllerTest < ActionController::TestCase
   def setup
     @post = posts :one
-    @comment = Comment.find 1
+    @comment = comments :one
   end
 
   context "on GET to :index" do
