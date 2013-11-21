@@ -4,6 +4,7 @@ resource_controller makes RESTful controllers easier, more maintainable, and sup
 
 == About this fork
 
+- This fork is not maintained, and we're not accepting pull requests. Please simply fork.
 - This fork adds Rails 3 compatibility to the currently unmaintained {resource_controller}[http://github.com/jamesgolick/resource_controller]. You should use the original resource_controller for Rails 2 applications.
 - This fork adds *no* new features.
 - This fork is available on RubyGems as +makandra_resource_controller+ for convenience.
