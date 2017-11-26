@@ -60,7 +60,8 @@ module ResourceController
         # Returns the form params.  Defaults to params[model_name] (i.e. params["post"])
         #
         def object_params
-          params["#{object_name}"]
+          white_listed_params_method_name = "#{object_name}_params"
+          self.class.method_defined?(white_listed_params_method_name) ? self.send(white_listed_params_method_name) : params[object_name]
         end
 
         # Builds the object, but doesn't save it, during the new, and create action.
