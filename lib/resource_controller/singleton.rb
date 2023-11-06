@@ -5,7 +5,7 @@ module ResourceController
   # Inherit from this class to create your RESTful singleton controller.  See the README for usage.
   # 
   class Singleton < ::ApplicationController
-    unloadable
+    #unloadable
     
     def self.inherited(subclass)
       super

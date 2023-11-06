@@ -10,3 +10,4 @@ test/db/test.sqlite3
 .idea
 doc
 test/Gemfile.lock
+.DS_Store
