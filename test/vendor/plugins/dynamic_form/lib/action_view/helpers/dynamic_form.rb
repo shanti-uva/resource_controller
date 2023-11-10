@@ -15,8 +15,8 @@ module ActionView
       #
       #   input("post", "title")
       #   # => <input id="post_title" name="post[title]" size="30" type="text" value="Hello World" />
-      def input(record_name, method, options = {})
-        InstanceTag.new(record_name, method, self).to_tag(options)
+      def input(record_name, method, **options)
+        InstanceTag.new(record_name, method, self).to_tag(**options)
       end
 
       # Returns an entire form with all needed input tags for a specified Active Record object. For example, if <tt>@post</tt>
@@ -69,7 +69,7 @@ module ActionView
       # * <tt>:method</tt> - The method used when submitting the form (default: +post+).
       # * <tt>:multipart</tt> - Whether to change the enctype of the form to "multipart/form-data", used when uploading a file (default: +false+).
       # * <tt>:submit_value</tt> - The text of the submit button (default: "Create" if a new record, otherwise "Update").
-      def form(record_name, options = {})
+      def form(record_name, **options)
         record = instance_variable_get("@#{record_name}")
         record = convert_to_model(record)
 
@@ -81,9 +81,9 @@ module ActionView
 
         contents = form_tag({:action => action}, :method =>(options[:method] || 'post'), :enctype => options[:multipart] ? 'multipart/form-data': nil)
         contents.safe_concat hidden_field(record_name, :id) if record.persisted?
-        contents.safe_concat all_input_tags(record, record_name, options)
+        contents.safe_concat all_input_tags(record, record_name, **options)
         yield contents if block_given?
-        contents.safe_concat submit_tag(submit_value)
+        contents.safe_concat submit_tag(**submit_value)
         contents.safe_concat('</form>')
       end
 
@@ -251,23 +251,23 @@ module ActionView
       end
 
       module InstanceTagMethods
-        def to_tag(options = {})
+        def to_tag(**options)
           case column_type
             when :string
               field_type = @method_name.include?("password") ? "password" : "text"
-              to_input_field_tag(field_type, options)
+              to_input_field_tag(field_type, **options)
             when :text
               to_text_area_tag(options)
             when :integer, :float, :decimal
-              to_input_field_tag("text", options)
+              to_input_field_tag("text", **options)
             when :date
-              to_date_select_tag(options)
+              to_date_select_tag(**options)
             when :datetime, :timestamp
-              to_datetime_select_tag(options)
+              to_datetime_select_tag(**options)
             when :time
-              to_time_select_tag(options)
+              to_time_select_tag(**options)
             when :boolean
-              to_boolean_select_tag(options)
+              to_boolean_select_tag(**options)
           end
         end
 
@@ -281,8 +281,8 @@ module ActionView
           @template.error_message_on(@object || @object_name, method, *args)
         end
 
-        def error_messages(options = {})
-          @template.error_messages_for(@object_name, objectify_options(options))
+        def error_messages(**options)
+          @template.error_messages_for(@object_name, objectify_options(**options))
         end
       end
     end
