@@ -33,7 +33,7 @@ module ResourceController
     def update
       load_object
       before :update
-      if object.update_attributes object_params
+      if object.update object_params
         after :update
         set_flash :update
         response_for :update
