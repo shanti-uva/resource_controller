@@ -140,7 +140,7 @@ Loading objects in singletons is similar to plural controllers with one exceptio
   class AccountsController < ResourceController::Singleton
     private
       def object
-        @object ||= Account.find(session[:account_id])
+        @object ||= Account.find(session['account_id'])
       end
    end
 
@@ -158,7 +158,7 @@ If you have the :has_many association with a singleton parent remember to overri
 
     protected
     def parent_object
-      Account.find(session[:account_id])
+      Account.find(session['account_id'])
     end
   end
 

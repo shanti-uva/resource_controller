@@ -28,7 +28,7 @@ module ResourceController
         # class AccountsController < ResourceController::Singleton
         #   private
         #     def object
-        #       @object ||= Account.find(session[:account_id])
+        #       @object ||= Account.find(session['account_id'])
         #     end
         #   end
         #  
